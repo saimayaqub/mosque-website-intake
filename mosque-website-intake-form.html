@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mosque Website Project Intake Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      background: linear-gradient(135deg, #f5f5f5 0%, #f9f9f9 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+      color: white;
+      padding: 2rem 2rem;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    
+    .header p {
+      font-size: 14px;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+    
+    .content {
+      padding: 2rem;
+    }
+    
+    .section {
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #e8e8e8;
+    }
+    
+    .feature-group {
+      background: #fafafa;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .feature-group-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .feature-item:hover {
+      background: #f0f0f0;
+    }
+    
+    .feature-item input[type="checkbox"] {
+      margin-top: 3px;
+      cursor: pointer;
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+    }
+    
+    .feature-content {
+      flex: 1;
+    }
+    
+    .feature-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    
+    .feature-cost {
+      font-size: 12px;
+      color: #888;
+    }
+    
+    .pricing-box {
+      background: linear-gradient(135deg, #f0f4f8 0%, #e8f0f8 100%);
+      border: 1px solid #d0dce8;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .pricing-label {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+    
+    .pricing-value {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a3a52;
+      margin-bottom: 8px;
+    }
+    
+    .pricing-note {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .question-group {
+      margin-bottom: 2rem;
+    }
+    
+    .question-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    .question-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-left: 0;
+    }
+    
+    .radio-option, .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .radio-option:hover, .checkbox-option:hover {
+      background: #f5f5f5;
+    }
+    
+    .radio-option input, .checkbox-option input {
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+    
+    .text-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+    
+    .text-input:focus {
+      outline: none;
+      border-color: #1a3a52;
+      box-shadow: 0 0 0 3px rgba(26, 58, 82, 0.1);
+    }
+    
+    textarea.text-input {
+      resize: vertical;
+      min-height: 90px;
+    }
+    
+    .rate-input-group {
+      background: #fafafa;
+      border: 1px solid #e8e8e8;
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .rate-input-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+    }
+    
+    .rate-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .rate-row span {
+      font-size: 14px;
+      color: #666;
+      min-width: 80px;
+    }
+    
+    .rate-row input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 2rem;
+    }
+    
+    button {
+      flex: 1;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(26, 58, 82, 0.2);
+    }
+    
+    .btn-secondary {
+      background: white;
+      border: 1px solid #ddd;
+      color: #1a1a1a;
+    }
+    
+    .btn-secondary:hover {
+      background: #f5f5f5;
+      border-color: #999;
+    }
+    
+    .success-message {
+      display: none;
+      background: #e8f5e9;
+      border: 1px solid #81c784;
+      color: #2e7d32;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    
+    @media (max-width: 640px) {
+      .header {
+        padding: 1.5rem 1.25rem;
+      }
+      
+      .header h1 {
+        font-size: 22px;
+      }
+      
+      .content {
+        padding: 1.5rem 1.25rem;
+      }
+      
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>Mosque Website Project</h1>
+    <p>Tell me what you need. Pricing updates as you select features.</p>
+  </div>
+  
+  <div class="content">
+    <form id="intakeForm">
+      
+      <!-- FEATURES SECTION -->
+      <div class="section">
+        <div class="section-title">Step 1: Select Your Features</div>
+        
+        <div class="feature-group">
+          <div class="feature-group-title">Basic Package</div>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="16-24" data-cost="200-300">
+            <div class="feature-content">
+              <div class="feature-name">Planning, design, homepage</div>
+              <div class="feature-cost">16–24 hours | USD 200–300</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="10-16" data-cost="125-200">
+            <div class="feature-content">
+              <div class="feature-name">Prayer times, Ramadan calendar</div>
+              <div class="feature-cost">10–16 hours | USD 125–200</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="6-10" data-cost="75-125">
+            <div class="feature-content">
+              <div class="feature-name">About, Contact, Volunteer pages</div>
+              <div class="feature-cost">6–10 hours | USD 75–125</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="3-5" data-cost="37-62">
+            <div class="feature-content">
+              <div class="feature-name">Donations page (e-transfer)</div>
+              <div class="feature-cost">3–5 hours | USD 37–62</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="6-10" data-cost="75-125">
+            <div class="feature-content">
+              <div class="feature-name">Live streaming (YouTube)</div>
+              <div class="feature-cost">6–10 hours | USD 75–125</div>
+            </div>
+          </label>
+        </div>
+        
+        <div class="feature-group">
+          <div class="feature-group-title">Add-ons (optional)</div>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="12-18" data-cost="150-225">
+            <div class="feature-content">
+              <div class="feature-name">Admin setup + training</div>
+              <div class="feature-cost">12–18 hours | USD 150–225</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="4-6" data-cost="50-75">
+            <div class="feature-content">
+              <div class="feature-name">Imam appointment booking</div>
+              <div class="feature-cost">4–6 hours | USD 50–75</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="10-16" data-cost="125-200">
+            <div class="feature-content">
+              <div class="feature-name">Events page with registration</div>
+              <div class="feature-cost">10–16 hours | USD 125–200</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="4-6" data-cost="50-75">
+            <div class="feature-content">
+              <div class="feature-name">Newsletter sign-up</div>
+              <div class="feature-cost">4–6 hours | USD 50–75</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="12-20" data-cost="150-250">
+            <div class="feature-content">
+              <div class="feature-name">Card donations + monthly giving</div>
+              <div class="feature-cost">12–20 hours | USD 150–250</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="10-16" data-cost="125-200">
+            <div class="feature-content">
+              <div class="feature-name">Muslim business directory</div>
+              <div class="feature-cost">10–16 hours | USD 125–200</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="10-14" data-cost="125-175">
+            <div class="feature-content">
+              <div class="feature-name">Blog / articles section</div>
+              <div class="feature-cost">10–14 hours | USD 125–175</div>
+            </div>
+          </label>
+          
+          <label class="feature-item">
+            <input type="checkbox" class="feature" data-hours="12-20" data-cost="150-250">
+            <div class="feature-content">
+              <div class="feature-name">Second language (Urdu/Arabic)</div>
+              <div class="feature-cost">12–20 hours | USD 150–250</div>
+            </div>
+          </label>
+        </div>
+        
+        <div class="pricing-box">
+          <div class="pricing-label">Your project total</div>
+          <div class="pricing-value">
+            <span id="totalHours">0</span> hours | USD <span id="totalCost">0</span>
+          </div>
+          <div class="pricing-note">
+            Standard rate: USD 12.50/hour (50% discount for mosque projects)<br>
+            Your rate will be confirmed in the next section.
+          </div>
+        </div>
+      </div>
+      
+      <!-- QUESTIONS SECTION -->
+      <div class="section">
+        <div class="section-title">Step 2: Answer a Few Questions</div>
+        
+        <div class="question-group">
+          <label class="question-label">1. Who should I contact about this project?</label>
+          <input type="text" class="text-input" id="q1Name" placeholder="Name" required>
+          <input type="text" class="text-input" id="q1Contact" placeholder="Phone or email" required>
+        </div>
+        
+        <div class="question-group">
+          <label class="question-label">2. When would you like the website live?</label>
+          <div class="question-options">
+            <label class="radio-option">
+              <input type="radio" name="q2Timeline" value="Within 2 weeks">
+              Within 2 weeks
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q2Timeline" value="Within 4 weeks">
+              Within 4 weeks
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q2Timeline" value="By a specific date">
+              By a specific date
+            </label>
+          </div>
+        </div>
+        
+        <div class="question-group">
+          <label class="question-label">3. On your busiest day, how many people would watch live?</label>
+          <div class="question-options">
+            <label class="radio-option">
+              <input type="radio" name="q3Audience" value="Dozens">
+              Dozens
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q3Audience" value="Hundreds">
+              Hundreds
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q3Audience" value="Thousands">
+              Thousands
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q3Audience" value="Not sure">
+              Not sure
+            </label>
+          </div>
+        </div>
+        
+        <div class="question-group">
+          <label class="question-label">4. For donations, what works for you?</label>
+          <div class="question-options">
+            <label class="radio-option">
+              <input type="radio" name="q4Donations" value="E-transfer only">
+              E-transfer only
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q4Donations" value="Card payments too">
+              Card payments too
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q4Donations" value="Advise me">
+              Advise me
+            </label>
+          </div>
+        </div>
+        
+        <div class="question-group">
+          <label class="question-label">5. Who will update the website after launch?</label>
+          <div class="question-options">
+            <label class="radio-option">
+              <input type="radio" name="q5Maintenance" value="Your staff">
+              Your staff
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q5Maintenance" value="Volunteers">
+              Volunteers
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q5Maintenance" value="Both">
+              Both
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q5Maintenance" value="I'll handle it with ongoing support">
+              I'll handle it with ongoing support
+            </label>
+          </div>
+        </div>
+        
+        <div class="question-group">
+          <label class="question-label">6. Is your text and photo content ready?</label>
+          <div class="question-options">
+            <label class="radio-option">
+              <input type="radio" name="q6Content" value="Mostly ready">
+              Mostly ready
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q6Content" value="Partly">
+              Partly
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="q6Content" value="Need help preparing it">
+              Need help preparing it
+            </label>
+          </div>
+        </div>
+        
+        <div class="question-group">
+          <label class="question-label">7. Anything else you'd like to mention?</label>
+          <textarea class="text-input" id="q7Notes" placeholder="Tell me anything that helps..."></textarea>
+        </div>
+      </div>
+      
+      <!-- RATE SECTION -->
+      <div class="section">
+        <div class="section-title">Step 3: Confirm Pricing</div>
+        
+        <div class="rate-input-group">
+          <label>Standard rate for mosque projects: USD 12.50/hour</label>
+          <p style="font-size: 12px; color: #666; margin-bottom: 1.5rem; line-height: 1.6;">This is a 50% community discount. If you'd prefer a different rate, let me know below.</p>
+          
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <label style="min-width: fit-content; font-size: 14px; color: #666;">Your preferred rate:</label>
+            <div style="flex: 1;">
+              <input type="number" id="preferredRate" placeholder="USD per hour" step="0.01" min="0" style="width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;">
+            </div>
+          </div>
+          
+          <p style="font-size: 12px; color: #999; margin-top: 10px;">Leave blank to accept USD 12.50/hour</p>
+        </div>
+      </div>
+      
+      <!-- SUBMIT -->
+      <div class="button-group">
+        <button type="button" class="btn-primary" onclick="copyToClipboard()">Copy & Send</button>
+        <button type="reset" class="btn-secondary">Clear</button>
+      </div>
+      
+      <div class="success-message" id="successMsg">
+        ✓ Copied to clipboard! Paste into an email to share with me.
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const featureInputs = document.querySelectorAll('.feature');
+  
+  function updatePricing() {
+    let minHours = 0, maxHours = 0, minCost = 0, maxCost = 0;
+    
+    featureInputs.forEach(input => {
+      if (input.checked) {
+        const [h1, h2] = input.dataset.hours.split('-').map(Number);
+        const [c1, c2] = input.dataset.cost.split('-').map(Number);
+        minHours += h1;
+        maxHours += h2;
+        minCost += c1;
+        maxCost += c2;
+      }
+    });
+    
+    document.getElementById('totalHours').textContent = minHours + '–' + maxHours;
+    document.getElementById('totalCost').textContent = minCost + '–' + maxCost;
+  }
+  
+  featureInputs.forEach(input => input.addEventListener('change', updatePricing));
+  
+  function copyToClipboard() {
+    const name = document.getElementById('q1Name').value;
+    const contact = document.getElementById('q1Contact').value;
+    const preferredRate = document.getElementById('preferredRate').value;
+    
+    if (!name || !contact) {
+      alert('Please fill in your name and contact info.');
+      return;
+    }
+    
+    let summary = `=== MOSQUE WEBSITE PROJECT INTAKE ===\n\n`;
+    summary += `CONTACT\n`;
+    summary += `Name: ${name}\n`;
+    summary += `Contact: ${contact}\n\n`;
+    
+    summary += `SELECTED FEATURES & PRICING\n`;
+    const totalH = document.getElementById('totalHours').textContent;
+    const totalC = document.getElementById('totalCost').textContent;
+    summary += `Total project: ${totalH} hours | USD ${totalC}\n`;
+    summary += `Hourly rate: ${preferredRate ? 'USD ' + preferredRate : 'USD 12.50 (standard mosque rate)'}\n\n`;
+    
+    summary += `ANSWERS\n`;
+    const q2 = document.querySelector('input[name="q2Timeline"]:checked');
+    const q3 = document.querySelector('input[name="q3Audience"]:checked');
+    const q4 = document.querySelector('input[name="q4Donations"]:checked');
+    const q5 = document.querySelector('input[name="q5Maintenance"]:checked');
+    const q6 = document.querySelector('input[name="q6Content"]:checked');
+    const q7 = document.getElementById('q7Notes').value;
+    
+    if (q2) summary += `Timeline: ${q2.value}\n`;
+    if (q3) summary += `Live audience estimate: ${q3.value}\n`;
+    if (q4) summary += `Donations: ${q4.value}\n`;
+    if (q5) summary += `Maintenance: ${q5.value}\n`;
+    if (q6) summary += `Content ready: ${q6.value}\n`;
+    if (q7) summary += `Notes: ${q7}\n`;
+    
+    summary += `\n=== Send this to ===\n`;
+    summary += `Email: saaima.yaqoob@gmail.com\n`;
+    summary += `WhatsApp: +923061115444\n`;
+    
+    navigator.clipboard.writeText(summary).then(() => {
+      document.getElementById('successMsg').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successMsg').style.display = 'none';
+      }, 4000);
+    }).catch(() => {
+      alert('Could not copy. Please try again.');
+    });
+  }
+</script>
+
+</body>
+</html>
