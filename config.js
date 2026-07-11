@@ -26,5 +26,16 @@ window.INTAKE_CONFIG = {
   // Cloudflare, GoDaddy, etc.) and the specific domain chosen.
   domain: {
     estimatedAnnualCost: 'USD 10–25/year'
+  },
+
+  // Payment & next-steps wording shown in the success message after submitting.
+  //   quoteTurnaround — how soon you'll send a tailored quote.
+  //   bookingFee      — small token (in the currency above) to reserve a slot,
+  //                     deducted from the final bill. Keeps starting easy.
+  //   depositPercent  — deposit to begin work (or split into milestones).
+  payment: {
+    quoteTurnaround: '2 business days',
+    bookingFee: 50,
+    depositPercent: 30
   }
 };

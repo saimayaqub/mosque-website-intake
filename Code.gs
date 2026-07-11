@@ -25,6 +25,7 @@ var HEADERS = [
   'Name',
   'Contact',
   'Selected Features',
+  'Custom Feature Request',
   'Total Hours',
   'Total Cost (USD)',
   'Quoted Rate',
@@ -58,6 +59,7 @@ function doPost(e) {
       data.name || '',
       data.contact || '',
       features,
+      data.customFeature || '',
       data.totalHours || '',
       data.totalCost || '',
       data.quotedRate || '',
@@ -97,6 +99,7 @@ function sendNotification(data, timestamp) {
     'Contact: ' + (data.contact || '') + '\n\n' +
     'FEATURES & PRICING\n' +
     featureList + '\n' +
+    'Custom request: ' + (data.customFeature || '—') + '\n' +
     'Total: ' + (data.totalHours || '0') + ' hours | USD ' + (data.totalCost || '0') + '\n' +
     'Quoted rate: ' + (data.quotedRate || '') + '\n' +
     'Rate works for them? ' + (data.rateFit || '—') + '\n' +

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mosque Website Project Intake Form</title>
+  <title>Your Masjid Website — Tell Us What You Need</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -72,6 +72,58 @@
       padding: 2rem;
     }
     
+    .why-section {
+      background: var(--cream);
+      border: 1px solid var(--accent-muted);
+      border-radius: 10px;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .why-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .why-lead {
+      font-size: 14px;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-bottom: 1.1rem;
+    }
+
+    .why-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .why-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      font-size: 13.5px;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .why-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .why-list strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
     .section {
       margin-bottom: 2.5rem;
     }
@@ -145,34 +197,6 @@
       color: var(--accent-h);
     }
     
-    .pricing-box {
-      background: var(--cream);
-      border: 1px solid var(--accent-muted);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .pricing-label {
-      font-size: 12px;
-      color: var(--mid);
-      margin-bottom: 6px;
-    }
-    
-    .pricing-value {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-    
-    .pricing-note {
-      font-size: 12px;
-      color: var(--mid);
-      line-height: 1.5;
-    }
-
     .rate-original {
       color: var(--mid);
       opacity: 0.65;
@@ -209,16 +233,10 @@
       margin-bottom: 1.25rem;
     }
 
-    .btn-estimate {
-      width: 100%;
-      margin-top: 1.25rem;
-    }
-
     .estimate-breakdown {
-      display: none;
-      margin-top: 1.25rem;
-      background: var(--paper);
-      border: 1px solid var(--rule);
+      margin-top: 1.5rem;
+      background: var(--cream);
+      border: 1px solid var(--accent-muted);
       border-left: 3px solid var(--accent);
       border-radius: 8px;
       padding: 1.25rem;
@@ -470,13 +488,26 @@
 
 <div class="container">
   <div class="header">
-    <h1>Mosque Website Project</h1>
-    <p>Tell me what you need. Pricing updates as you select features.</p>
+    <h1>Let's Build Your Masjid's Website</h1>
+    <p>Tell us what your community needs — pick the features that matter to you, and your estimate updates as you go. Every masjid is different, so nothing here is fixed.</p>
   </div>
   
   <div class="content">
+
+    <div class="why-section">
+      <div class="why-title">Why work with Saima?</div>
+      <p class="why-lead">Building a website for your masjid shouldn't be stressful or expensive. Here's what you can count on:</p>
+      <ul class="why-list">
+        <li><strong>Built for masjids, not generic templates.</strong> Prayer times, Ramadan calendars, Jumu'ah livestreams, donations, bilingual pages — I already understand what a masjid needs, so you won't have to explain the basics.</li>
+        <li><strong>Honest, community pricing.</strong> A 50% discount for masjid projects, with every cost shown upfront — including the domain. No surprises, no hidden fees.</li>
+        <li><strong>Low-risk to start.</strong> Begin with just a 30% deposit, or split it into milestones as the work takes shape. You're never paying far ahead of what's done.</li>
+        <li><strong>You work with me directly.</strong> No agencies, no account managers, no runaround — one person who cares about your project and replies quickly on WhatsApp or email.</li>
+        <li><strong>Yours to run after launch.</strong> I set everything up and show your team how to update it, so your staff or volunteers stay in control.</li>
+      </ul>
+    </div>
+
     <form id="intakeForm">
-      
+
       <!-- FEATURES SECTION -->
       <div class="section">
         <div class="section-title">Step 1: Select Your Features</div>
@@ -485,7 +516,7 @@
           <div class="feature-group-title">Basic Package</div>
           
           <label class="feature-item">
-            <input type="checkbox" class="feature" data-hours="16-24" data-cost="200-300">
+            <input type="checkbox" class="feature" data-hours="16-24" data-cost="200-300" checked>
             <div class="feature-content">
               <div class="feature-name">Planning, design, homepage</div>
               <div class="feature-cost">16–24 hours | USD 200–300</div>
@@ -493,7 +524,7 @@
           </label>
           
           <label class="feature-item">
-            <input type="checkbox" class="feature" data-hours="10-16" data-cost="125-200">
+            <input type="checkbox" class="feature" data-hours="10-16" data-cost="125-200" checked>
             <div class="feature-content">
               <div class="feature-name">Prayer times, Ramadan calendar</div>
               <div class="feature-cost">10–16 hours | USD 125–200</div>
@@ -501,7 +532,7 @@
           </label>
           
           <label class="feature-item">
-            <input type="checkbox" class="feature" data-hours="6-10" data-cost="75-125">
+            <input type="checkbox" class="feature" data-hours="6-10" data-cost="75-125" checked>
             <div class="feature-content">
               <div class="feature-name">About, Contact, Volunteer pages</div>
               <div class="feature-cost">6–10 hours | USD 75–125</div>
@@ -509,7 +540,7 @@
           </label>
           
           <label class="feature-item">
-            <input type="checkbox" class="feature" data-hours="3-5" data-cost="37-62">
+            <input type="checkbox" class="feature" data-hours="3-5" data-cost="37-62" checked>
             <div class="feature-content">
               <div class="feature-name">Donations page (e-transfer)</div>
               <div class="feature-cost">3–5 hours | USD 37–62</div>
@@ -517,7 +548,7 @@
           </label>
           
           <label class="feature-item">
-            <input type="checkbox" class="feature" data-hours="6-10" data-cost="75-125">
+            <input type="checkbox" class="feature" data-hours="6-10" data-cost="75-125" checked>
             <div class="feature-content">
               <div class="feature-name">Live streaming (YouTube)</div>
               <div class="feature-cost">6–10 hours | USD 75–125</div>
@@ -592,18 +623,20 @@
             </div>
           </label>
         </div>
-        
-        <div class="pricing-box">
-          <div class="pricing-label">Your project total</div>
-          <div class="pricing-value">
-            <span id="totalHours">0</span> hours | USD <span id="totalCost">0</span>
-          </div>
-          <div class="pricing-note" id="pricingNote">
-            <!-- populated from config.js pricing -->
+
+        <div class="feature-group">
+          <label class="feature-item" style="margin-bottom: 0;">
+            <input type="checkbox" id="customFeatureToggle">
+            <div class="feature-content">
+              <div class="feature-name">I don't see a feature I need</div>
+              <div class="feature-cost">No problem — tell us what you have in mind and we'll include it in your quote</div>
+            </div>
+          </label>
+          <div id="customFeatureDetail" style="display: none; margin-top: 12px;">
+            <textarea class="text-input" id="customFeatureText" placeholder="Describe the feature(s) your masjid needs — e.g. a Qurbani sign-up, a funeral notices page, a members portal..." style="margin-bottom: 0;"></textarea>
           </div>
         </div>
 
-        <button type="button" class="btn-primary btn-estimate" id="estimateBtn" onclick="calculateEstimate()">Calculate Estimate</button>
         <div class="estimate-breakdown" id="estimateBreakdown"></div>
       </div>
 
@@ -784,12 +817,12 @@
 
       <!-- SUBMIT -->
       <div class="button-group">
-        <button type="button" class="btn-primary" id="submitBtn" onclick="submitInquiry()">Submit Inquiry</button>
+        <button type="button" class="btn-primary" id="submitBtn" onclick="submitInquiry()">Share My Requirements</button>
         <button type="reset" class="btn-secondary">Clear</button>
       </div>
 
       <div class="success-message" id="successMsg">
-        ✓ Thanks — your inquiry was received. I'll be in touch shortly.
+        ✓ Thank you — I've received your requirements. I'll be in touch shortly with a tailored quote.
       </div>
 
       <div class="error-message" id="errorMsg">
@@ -816,6 +849,11 @@
   const DOMAIN = CONFIG.domain || {};
   const DOMAIN_COST = DOMAIN.estimatedAnnualCost || 'USD 10–25/year';
 
+  const PAYMENT = CONFIG.payment || {};
+  const QUOTE_TURNAROUND = PAYMENT.quoteTurnaround || '2 business days';
+  const BOOKING_FEE = Number(PAYMENT.bookingFee) || 0;
+  const DEPOSIT_PCT = Number(PAYMENT.depositPercent) || 30;
+
   // Show whole numbers without decimals (30, 15), fractional rates with 2 (12.50).
   function fmtRate(n) {
     return Number.isInteger(n) ? String(n) : n.toFixed(2);
@@ -829,7 +867,8 @@
 
   const featureInputs = document.querySelectorAll('.feature');
 
-  function updatePricing() {
+  // Sum hours and cost across all checked features. Returns display strings.
+  function computeTotals() {
     let minHours = 0, maxHours = 0, minCost = 0, maxCost = 0;
 
     featureInputs.forEach(input => {
@@ -843,8 +882,7 @@
       }
     });
 
-    document.getElementById('totalHours').textContent = minHours + '–' + maxHours;
-    document.getElementById('totalCost').textContent = minCost + '–' + maxCost;
+    return { hours: minHours + '–' + maxHours, cost: minCost + '–' + maxCost };
   }
 
   // Render all rate/cost labels from config so pricing lives in one place.
@@ -861,10 +899,6 @@
         hoursLabel + ' hours | ' + CURRENCY + ' ' + lo + '–' + hi;
     });
 
-    document.getElementById('pricingNote').innerHTML =
-      'Standard rate: ' + rateHtml + ' (' + DISCOUNT_PCT + '% discount for mosque projects)' +
-      '<br>Your rate will be confirmed in the next section.';
-
     document.getElementById('rateHeadline').innerHTML = 'Mosque project rate: ' + rateHtml;
     document.getElementById('rateSubnote').textContent =
       "That's a " + DISCOUNT_PCT + '% community discount off my regular ' + CURRENCY + ' ' +
@@ -874,10 +908,19 @@
 
     document.getElementById('domainCost').textContent = DOMAIN_COST;
 
-    updatePricing();
+    // Post-submission message: sets turnaround + easy-start payment expectations.
+    var bookingBit = BOOKING_FEE > 0
+      ? "a small " + CURRENCY + " " + BOOKING_FEE + " booking amount reserves your spot (and comes off your final bill), then a " + DEPOSIT_PCT + "% deposit"
+      : "just a " + DEPOSIT_PCT + "% deposit";
+    document.getElementById('successMsg').innerHTML =
+      "✓ Thank you — I’ve received your requirements. I’ll review them and send you a tailored quote within " +
+      QUOTE_TURNAROUND + ". Starting is easy — " + bookingBit +
+      " or staged milestone payments as the work takes shape.";
+
+    renderEstimate();
   }
 
-  featureInputs.forEach(input => input.addEventListener('change', updatePricing));
+  featureInputs.forEach(input => input.addEventListener('change', renderEstimate));
   renderPricingUI();
 
   // Reveal the optional "what did you have in mind" field only when the
@@ -889,15 +932,41 @@
     });
   });
 
+  // Reveal the custom-feature textbox when the client says a feature is missing.
+  document.getElementById('customFeatureToggle').addEventListener('change', function () {
+    const detail = document.getElementById('customFeatureDetail');
+    detail.style.display = this.checked ? 'block' : 'none';
+    if (this.checked) document.getElementById('customFeatureText').focus();
+    renderEstimate();
+  });
+  document.getElementById('customFeatureText').addEventListener('input', renderEstimate);
+
+  // Keep the UI in sync when the form is cleared (Clear button or after submit).
+  document.getElementById('intakeForm').addEventListener('reset', () => {
+    setTimeout(() => {
+      document.getElementById('budgetDetail').style.display = 'none';
+      document.getElementById('customFeatureDetail').style.display = 'none';
+      renderEstimate();
+    }, 0);
+  });
+
   // Build and reveal an itemized tentative estimate from the selected features.
-  function calculateEstimate() {
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  // Live tentative estimate — always visible, recomputed on every change.
+  function renderEstimate() {
     const panel = document.getElementById('estimateBreakdown');
     const features = getSelectedFeatures();
+    const customFeature = document.getElementById('customFeatureToggle').checked
+      ? document.getElementById('customFeatureText').value.trim()
+      : '';
 
-    if (!features.length) {
+    if (!features.length && !customFeature) {
       panel.innerHTML =
-        '<p class="estimate-empty">Select at least one feature above, then tap “Calculate Estimate” again.</p>';
-      panel.style.display = 'block';
+        '<p class="estimate-empty">Select a feature above (or tell us what you need) to see your estimate.</p>';
       return;
     }
 
@@ -910,21 +979,32 @@
         '<span class="estimate-line__cost">' + hoursLabel + ' hrs · ' + CURRENCY + ' ' + lo + '–' + hi + '</span></div>';
     });
 
-    const totalH = document.getElementById('totalHours').textContent;
-    const totalC = document.getElementById('totalCost').textContent;
+    if (customFeature) {
+      rows +=
+        '<div class="estimate-line"><span>Your request: ' + escapeHtml(customFeature) + '</span>' +
+        '<span class="estimate-line__cost">priced separately</span></div>';
+    }
+
+    const totals = computeTotals();
+    const totalRow = features.length
+      ? '<div class="estimate-total"><span>Total</span><span>' +
+        totals.hours + ' hrs · ' + CURRENCY + ' ' + totals.cost + '</span></div>'
+      : '';
+
+    const customNote = customFeature
+      ? ' We’ll price your custom request and add it to your final quote.'
+      : '';
 
     panel.innerHTML =
       '<h3>Your tentative estimate</h3>' +
       rows +
-      '<div class="estimate-total"><span>Total</span>' +
-      '<span>' + totalH + ' hrs · ' + CURRENCY + ' ' + totalC + '</span></div>' +
+      totalRow +
       '<p class="estimate-note">Priced at ' +
       '<span class="rate-original">' + CURRENCY + ' ' + fmtRate(REGULAR_RATE) + '/hr</span>' +
       '<span class="rate-discounted">' + CURRENCY + ' ' + fmtRate(RATE) + '/hr</span> ' +
-      '(' + DISCOUNT_PCT + '% mosque discount). Your domain name is a separate yearly cost ' +
-      '(about ' + DOMAIN_COST + '). This is a tentative estimate, not a final quote.</p>';
-    panel.style.display = 'block';
-    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      '(' + DISCOUNT_PCT + '% mosque discount).' + customNote +
+      ' Your domain name is a separate yearly cost (about ' + DOMAIN_COST + '). ' +
+      'This is a tentative estimate, not a final quote.</p>';
   }
 
   function getSelectedFeatures() {
@@ -966,14 +1046,18 @@
     const qDomain = document.querySelector('input[name="qDomain"]:checked');
 
     const features = getSelectedFeatures();
+    const customFeature = document.getElementById('customFeatureToggle').checked
+      ? document.getElementById('customFeatureText').value.trim()
+      : '';
 
     const payload = {
       name: name,
       contact: contact,
       selectedFeatures: features.map(f => f.name),
       featureDetails: features,
-      totalHours: document.getElementById('totalHours').textContent,
-      totalCost: document.getElementById('totalCost').textContent,
+      customFeature: customFeature,
+      totalHours: computeTotals().hours,
+      totalCost: computeTotals().cost,
       quotedRate: CURRENCY + ' ' + fmtRate(RATE) + '/hr (' + DISCOUNT_PCT + '% off ' + CURRENCY + ' ' + fmtRate(REGULAR_RATE) + ')',
       rateFit: rateFit ? rateFit.value : '',
       budgetNote: budgetNote,
@@ -1003,7 +1087,6 @@
     }).then(() => {
       successMsg.style.display = 'block';
       document.getElementById('intakeForm').reset();
-      updatePricing();
       successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }).catch(() => {
       errorMsg.style.display = 'block';
