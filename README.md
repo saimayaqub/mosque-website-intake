@@ -3,7 +3,7 @@
 A dynamic intake form for collecting mosque website project requirements and pricing quotes.
 Submissions are saved straight to a Google Sheet and emailed to you — no third-party service, no monthly fees.
 
-**🔗 Live form:** https://saimayaqub.github.io/mosque-website-intake/
+**🔗 Live form:** https://saimayaqub.github.io/mosque-website-order/
 
 ## Features
 
