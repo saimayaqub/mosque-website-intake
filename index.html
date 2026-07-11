@@ -4,16 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mosque Website Project Intake Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
+    /* Novosols brand tokens */
+    :root {
+      --ink:          #0D1B2A;
+      --mid:          #1A3348;
+      --accent:       #1B96D4;
+      --accent-h:     #116FA0;
+      --accent-muted: #D6E3ED;
+      --paper:        #F4F6F8;
+      --cream:        #E8F7FD;
+      --rule:         #D6E3ED;
+      --success:      #2d7a3a;
+      --serif:        "Playfair Display", Georgia, serif;
+      --sans:         "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono:         "DM Mono", monospace;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-      background: linear-gradient(135deg, #f5f5f5 0%, #f9f9f9 100%);
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
       padding: 20px;
       min-height: 100vh;
     }
@@ -28,16 +48,18 @@
     }
     
     .header {
-      background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+      background: linear-gradient(135deg, var(--ink) 0%, var(--mid) 100%);
       color: white;
       padding: 2rem 2rem;
       text-align: center;
     }
-    
+
     .header h1 {
-      font-size: 28px;
+      font-family: var(--serif);
+      font-size: 30px;
       margin-bottom: 8px;
-      font-weight: 600;
+      font-weight: 700;
+      letter-spacing: -0.02em;
     }
     
     .header p {
@@ -57,29 +79,30 @@
     .section-title {
       font-size: 16px;
       font-weight: 600;
-      color: #1a1a1a;
+      color: var(--ink);
       margin-bottom: 1rem;
       padding-bottom: 0.75rem;
-      border-bottom: 2px solid #e8e8e8;
+      border-bottom: 2px solid var(--ink);
     }
     
     .feature-group {
-      background: #fafafa;
-      border: 1px solid #e8e8e8;
+      background: var(--paper);
+      border: 1px solid var(--rule);
       border-radius: 8px;
       padding: 1.25rem;
       margin-bottom: 1.5rem;
     }
     
     .feature-group-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #666;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--mid);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.12em;
       margin-bottom: 1rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid var(--rule);
     }
     
     .feature-item {
@@ -94,7 +117,7 @@
     }
     
     .feature-item:hover {
-      background: #f0f0f0;
+      background: var(--cream);
     }
     
     .feature-item input[type="checkbox"] {
@@ -112,18 +135,19 @@
     .feature-name {
       font-size: 14px;
       font-weight: 500;
-      color: #1a1a1a;
+      color: var(--ink);
       margin-bottom: 4px;
     }
     
     .feature-cost {
+      font-family: var(--mono);
       font-size: 12px;
-      color: #888;
+      color: var(--accent-h);
     }
     
     .pricing-box {
-      background: linear-gradient(135deg, #f0f4f8 0%, #e8f0f8 100%);
-      border: 1px solid #d0dce8;
+      background: var(--cream);
+      border: 1px solid var(--accent-muted);
       border-radius: 8px;
       padding: 1rem;
       margin-bottom: 1.5rem;
@@ -131,23 +155,132 @@
     
     .pricing-label {
       font-size: 12px;
-      color: #666;
+      color: var(--mid);
       margin-bottom: 6px;
     }
     
     .pricing-value {
-      font-size: 18px;
-      font-weight: 600;
-      color: #1a3a52;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
       margin-bottom: 8px;
     }
     
     .pricing-note {
       font-size: 12px;
-      color: #666;
+      color: var(--mid);
       line-height: 1.5;
     }
-    
+
+    .rate-original {
+      color: var(--mid);
+      opacity: 0.65;
+      text-decoration: line-through;
+      font-weight: 400;
+      margin-right: 6px;
+    }
+
+    .rate-discounted {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .domain-box {
+      background: var(--cream);
+      border: 1px solid var(--accent-muted);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .domain-box__title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .domain-box__text {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn-estimate {
+      width: 100%;
+      margin-top: 1.25rem;
+    }
+
+    .estimate-breakdown {
+      display: none;
+      margin-top: 1.25rem;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+
+    .estimate-breakdown h3 {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .estimate-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      font-size: 13px;
+      color: var(--ink);
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--rule);
+    }
+
+    .estimate-line__cost {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent-h);
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .estimate-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 2px solid var(--ink);
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .estimate-total span:last-child {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    .estimate-note {
+      font-size: 12px;
+      color: var(--mid);
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+
+    .estimate-empty {
+      font-size: 13px;
+      color: var(--mid);
+    }
+
     .question-group {
       margin-bottom: 2rem;
     }
@@ -155,7 +288,7 @@
     .question-label {
       font-size: 14px;
       font-weight: 600;
-      color: #1a1a1a;
+      color: var(--ink);
       margin-bottom: 12px;
       display: block;
     }
@@ -178,7 +311,7 @@
     }
     
     .radio-option:hover, .checkbox-option:hover {
-      background: #f5f5f5;
+      background: var(--cream);
     }
     
     .radio-option input, .checkbox-option input {
@@ -191,7 +324,7 @@
     .text-input {
       width: 100%;
       padding: 10px 12px;
-      border: 1px solid #ddd;
+      border: 1px solid var(--rule);
       border-radius: 6px;
       font-size: 14px;
       margin-bottom: 10px;
@@ -201,8 +334,8 @@
     
     .text-input:focus {
       outline: none;
-      border-color: #1a3a52;
-      box-shadow: 0 0 0 3px rgba(26, 58, 82, 0.1);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(27, 150, 212, 0.15);
     }
     
     textarea.text-input {
@@ -211,8 +344,8 @@
     }
     
     .rate-input-group {
-      background: #fafafa;
-      border: 1px solid #e8e8e8;
+      background: var(--paper);
+      border: 1px solid var(--rule);
       border-radius: 8px;
       padding: 1.25rem;
       margin-bottom: 1.5rem;
@@ -222,7 +355,7 @@
       display: block;
       font-size: 14px;
       font-weight: 600;
-      color: #1a1a1a;
+      color: var(--ink);
       margin-bottom: 12px;
     }
     
@@ -234,14 +367,14 @@
     
     .rate-row span {
       font-size: 14px;
-      color: #666;
+      color: var(--mid);
       min-width: 80px;
     }
     
     .rate-row input {
       flex: 1;
       padding: 10px 12px;
-      border: 1px solid #ddd;
+      border: 1px solid var(--rule);
       border-radius: 6px;
       font-size: 14px;
       font-family: inherit;
@@ -265,24 +398,25 @@
     }
     
     .btn-primary {
-      background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+      background: var(--ink);
       color: white;
     }
-    
+
     .btn-primary:hover {
+      background: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(26, 58, 82, 0.2);
+      box-shadow: 0 4px 12px rgba(27, 150, 212, 0.25);
     }
     
     .btn-secondary {
       background: white;
-      border: 1px solid #ddd;
-      color: #1a1a1a;
+      border: 1px solid var(--rule);
+      color: var(--ink);
     }
     
     .btn-secondary:hover {
-      background: #f5f5f5;
-      border-color: #999;
+      background: var(--cream);
+      border-color: var(--mid);
     }
     
     .success-message {
@@ -294,6 +428,23 @@
       border-radius: 6px;
       margin-top: 1rem;
       text-align: center;
+    }
+
+    .error-message {
+      display: none;
+      background: #fdecea;
+      border: 1px solid #ef9a9a;
+      color: #c62828;
+      padding: 1rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
     }
     
     @media (max-width: 640px) {
@@ -447,13 +598,15 @@
           <div class="pricing-value">
             <span id="totalHours">0</span> hours | USD <span id="totalCost">0</span>
           </div>
-          <div class="pricing-note">
-            Standard rate: USD 12.50/hour (50% discount for mosque projects)<br>
-            Your rate will be confirmed in the next section.
+          <div class="pricing-note" id="pricingNote">
+            <!-- populated from config.js pricing -->
           </div>
         </div>
+
+        <button type="button" class="btn-primary btn-estimate" id="estimateBtn" onclick="calculateEstimate()">Calculate Estimate</button>
+        <div class="estimate-breakdown" id="estimateBreakdown"></div>
       </div>
-      
+
       <!-- QUESTIONS SECTION -->
       <div class="section">
         <div class="section-title">Step 2: Answer a Few Questions</div>
@@ -573,103 +726,290 @@
         <div class="section-title">Step 3: Confirm Pricing</div>
         
         <div class="rate-input-group">
-          <label>Standard rate for mosque projects: USD 12.50/hour</label>
-          <p style="font-size: 12px; color: #666; margin-bottom: 1.5rem; line-height: 1.6;">This is a 50% community discount. If you'd prefer a different rate, let me know below.</p>
-          
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <label style="min-width: fit-content; font-size: 14px; color: #666;">Your preferred rate:</label>
-            <div style="flex: 1;">
-              <input type="number" id="preferredRate" placeholder="USD per hour" step="0.01" min="0" style="width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;">
+          <label id="rateHeadline"><!-- populated from config.js pricing --></label>
+          <p id="rateSubnote" style="font-size: 12px; color: var(--mid); margin-bottom: 1.5rem; line-height: 1.6;"></p>
+
+          <div class="question-group" style="margin-bottom: 0;">
+            <label class="question-label" id="rateFitLabel">Does this rate work for your masjid?</label>
+            <div class="question-options">
+              <label class="radio-option">
+                <input type="radio" name="qRateFit" value="Yes, that works">
+                Yes, that works
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="qRateFit" value="We'd like to discuss it">
+                We'd like to discuss it
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="qRateFit" value="We're on a limited budget">
+                We're on a limited budget
+              </label>
+            </div>
+            <div id="budgetDetail" style="display: none; margin-top: 12px;">
+              <input type="text" class="text-input" id="budgetNote" placeholder="Roughly what did you have in mind? (optional)" style="margin-bottom: 0;">
             </div>
           </div>
-          
-          <p style="font-size: 12px; color: #999; margin-top: 10px;">Leave blank to accept USD 12.50/hour</p>
+        </div>
+
+        <div class="domain-box">
+          <div class="domain-box__title">One more cost to know about: your domain name</div>
+          <p class="domain-box__text">
+            The price above covers building your website. Your <strong>domain name</strong>
+            (your web address, e.g. <strong>yourmosque.org</strong>) is billed
+            <strong>separately every year by a domain provider</strong> and is
+            <strong>not included</strong> — this is a cost you cover directly.
+            Typical price: <strong id="domainCost"></strong>, depending on the provider
+            and the exact name you choose.
+          </p>
+
+          <div class="question-group" style="margin-bottom: 0;">
+            <label class="question-label">How would you like to handle the domain?</label>
+            <div class="question-options">
+              <label class="radio-option">
+                <input type="radio" name="qDomain" value="I'll buy & own my domain, and give developer access">
+                I'll buy and own my domain, and give you developer/admin access to my provider dashboard
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="qDomain" value="You choose & purchase it on my behalf, then bill me">
+                You choose and purchase a domain on my behalf, then add the cost to my invoice
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="qDomain" value="Not sure — advise me">
+                Not sure — advise me
+              </label>
+            </div>
+          </div>
         </div>
       </div>
-      
+
       <!-- SUBMIT -->
       <div class="button-group">
-        <button type="button" class="btn-primary" onclick="copyToClipboard()">Copy & Send</button>
+        <button type="button" class="btn-primary" id="submitBtn" onclick="submitInquiry()">Submit Inquiry</button>
         <button type="reset" class="btn-secondary">Clear</button>
       </div>
-      
+
       <div class="success-message" id="successMsg">
-        ✓ Copied to clipboard! Paste into an email to share with me.
+        ✓ Thanks — your inquiry was received. I'll be in touch shortly.
+      </div>
+
+      <div class="error-message" id="errorMsg">
+        ✕ Something went wrong sending your inquiry. Please try again, or email me directly.
       </div>
     </form>
   </div>
 </div>
 
+<script src="config.js"></script>
 <script>
+  // Endpoint & pricing come from config.js — keep settings out of this file.
+  const PLACEHOLDER_ENDPOINT = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+  const CONFIG = window.INTAKE_CONFIG || {};
+  const SHEET_ENDPOINT = CONFIG.sheetEndpoint || '';
+
+  const PRICING = CONFIG.pricing || {};
+  const CURRENCY = PRICING.currency || 'USD';
+  const REGULAR_RATE = Number(PRICING.regularRate) || 30;
+  const DISCOUNT_PCT = Number(PRICING.discountPercent) || 0;
+  // Discounted (mosque) hourly rate — everything on the form is priced from this.
+  const RATE = +(REGULAR_RATE * (1 - DISCOUNT_PCT / 100)).toFixed(2);
+
+  const DOMAIN = CONFIG.domain || {};
+  const DOMAIN_COST = DOMAIN.estimatedAnnualCost || 'USD 10–25/year';
+
+  // Show whole numbers without decimals (30, 15), fractional rates with 2 (12.50).
+  function fmtRate(n) {
+    return Number.isInteger(n) ? String(n) : n.toFixed(2);
+  }
+
+  // Cost range for a feature, computed from its hour range × the discounted rate.
+  function costRange(hoursStr) {
+    const [h1, h2] = hoursStr.split('-').map(Number);
+    return [Math.round(h1 * RATE), Math.round(h2 * RATE)];
+  }
+
   const featureInputs = document.querySelectorAll('.feature');
-  
+
   function updatePricing() {
     let minHours = 0, maxHours = 0, minCost = 0, maxCost = 0;
-    
+
     featureInputs.forEach(input => {
       if (input.checked) {
         const [h1, h2] = input.dataset.hours.split('-').map(Number);
-        const [c1, c2] = input.dataset.cost.split('-').map(Number);
+        const [c1, c2] = costRange(input.dataset.hours);
         minHours += h1;
         maxHours += h2;
         minCost += c1;
         maxCost += c2;
       }
     });
-    
+
     document.getElementById('totalHours').textContent = minHours + '–' + maxHours;
     document.getElementById('totalCost').textContent = minCost + '–' + maxCost;
   }
-  
+
+  // Render all rate/cost labels from config so pricing lives in one place.
+  function renderPricingUI() {
+    const rateHtml =
+      '<span class="rate-original">' + CURRENCY + ' ' + fmtRate(REGULAR_RATE) + '/hour</span>' +
+      '<span class="rate-discounted">' + CURRENCY + ' ' + fmtRate(RATE) + '/hour</span>';
+
+    // Per-feature cost labels (overwrites the static text in the markup).
+    featureInputs.forEach(input => {
+      const [lo, hi] = costRange(input.dataset.hours);
+      const hoursLabel = input.dataset.hours.replace('-', '–');
+      input.closest('.feature-item').querySelector('.feature-cost').textContent =
+        hoursLabel + ' hours | ' + CURRENCY + ' ' + lo + '–' + hi;
+    });
+
+    document.getElementById('pricingNote').innerHTML =
+      'Standard rate: ' + rateHtml + ' (' + DISCOUNT_PCT + '% discount for mosque projects)' +
+      '<br>Your rate will be confirmed in the next section.';
+
+    document.getElementById('rateHeadline').innerHTML = 'Mosque project rate: ' + rateHtml;
+    document.getElementById('rateSubnote').textContent =
+      "That's a " + DISCOUNT_PCT + '% community discount off my regular ' + CURRENCY + ' ' +
+      fmtRate(REGULAR_RATE) + '/hour rate.';
+    document.getElementById('rateFitLabel').textContent =
+      'Does the ' + CURRENCY + ' ' + fmtRate(RATE) + '/hour rate work for your masjid?';
+
+    document.getElementById('domainCost').textContent = DOMAIN_COST;
+
+    updatePricing();
+  }
+
   featureInputs.forEach(input => input.addEventListener('change', updatePricing));
-  
-  function copyToClipboard() {
-    const name = document.getElementById('q1Name').value;
-    const contact = document.getElementById('q1Contact').value;
-    const preferredRate = document.getElementById('preferredRate').value;
-    
+  renderPricingUI();
+
+  // Reveal the optional "what did you have in mind" field only when the
+  // client flags a budget concern — keeps it low-pressure, not a haggle box.
+  document.querySelectorAll('input[name="qRateFit"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const concern = radio.value !== 'Yes, that works';
+      document.getElementById('budgetDetail').style.display = concern ? 'block' : 'none';
+    });
+  });
+
+  // Build and reveal an itemized tentative estimate from the selected features.
+  function calculateEstimate() {
+    const panel = document.getElementById('estimateBreakdown');
+    const features = getSelectedFeatures();
+
+    if (!features.length) {
+      panel.innerHTML =
+        '<p class="estimate-empty">Select at least one feature above, then tap “Calculate Estimate” again.</p>';
+      panel.style.display = 'block';
+      return;
+    }
+
+    let rows = '';
+    features.forEach(f => {
+      const [lo, hi] = f.cost.split('-');
+      const hoursLabel = f.hours.replace('-', '–');
+      rows +=
+        '<div class="estimate-line"><span>' + f.name + '</span>' +
+        '<span class="estimate-line__cost">' + hoursLabel + ' hrs · ' + CURRENCY + ' ' + lo + '–' + hi + '</span></div>';
+    });
+
+    const totalH = document.getElementById('totalHours').textContent;
+    const totalC = document.getElementById('totalCost').textContent;
+
+    panel.innerHTML =
+      '<h3>Your tentative estimate</h3>' +
+      rows +
+      '<div class="estimate-total"><span>Total</span>' +
+      '<span>' + totalH + ' hrs · ' + CURRENCY + ' ' + totalC + '</span></div>' +
+      '<p class="estimate-note">Priced at ' +
+      '<span class="rate-original">' + CURRENCY + ' ' + fmtRate(REGULAR_RATE) + '/hr</span>' +
+      '<span class="rate-discounted">' + CURRENCY + ' ' + fmtRate(RATE) + '/hr</span> ' +
+      '(' + DISCOUNT_PCT + '% mosque discount). Your domain name is a separate yearly cost ' +
+      '(about ' + DOMAIN_COST + '). This is a tentative estimate, not a final quote.</p>';
+    panel.style.display = 'block';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function getSelectedFeatures() {
+    const selected = [];
+    featureInputs.forEach(input => {
+      if (input.checked) {
+        const [lo, hi] = costRange(input.dataset.hours);
+        selected.push({
+          name: input.closest('.feature-item').querySelector('.feature-name').textContent.trim(),
+          hours: input.dataset.hours,
+          cost: lo + '-' + hi
+        });
+      }
+    });
+    return selected;
+  }
+
+  function submitInquiry() {
+    const name = document.getElementById('q1Name').value.trim();
+    const contact = document.getElementById('q1Contact').value.trim();
+    const rateFit = document.querySelector('input[name="qRateFit"]:checked');
+    const budgetNote = document.getElementById('budgetNote').value.trim();
+
     if (!name || !contact) {
       alert('Please fill in your name and contact info.');
       return;
     }
-    
-    let summary = `=== MOSQUE WEBSITE PROJECT INTAKE ===\n\n`;
-    summary += `CONTACT\n`;
-    summary += `Name: ${name}\n`;
-    summary += `Contact: ${contact}\n\n`;
-    
-    summary += `SELECTED FEATURES & PRICING\n`;
-    const totalH = document.getElementById('totalHours').textContent;
-    const totalC = document.getElementById('totalCost').textContent;
-    summary += `Total project: ${totalH} hours | USD ${totalC}\n`;
-    summary += `Hourly rate: ${preferredRate ? 'USD ' + preferredRate : 'USD 12.50 (standard mosque rate)'}\n\n`;
-    
-    summary += `ANSWERS\n`;
+
+    if (!SHEET_ENDPOINT || SHEET_ENDPOINT === PLACEHOLDER_ENDPOINT) {
+      alert('The form is not connected yet. Please set sheetEndpoint in config.js.');
+      return;
+    }
+
     const q2 = document.querySelector('input[name="q2Timeline"]:checked');
     const q3 = document.querySelector('input[name="q3Audience"]:checked');
     const q4 = document.querySelector('input[name="q4Donations"]:checked');
     const q5 = document.querySelector('input[name="q5Maintenance"]:checked');
     const q6 = document.querySelector('input[name="q6Content"]:checked');
-    const q7 = document.getElementById('q7Notes').value;
-    
-    if (q2) summary += `Timeline: ${q2.value}\n`;
-    if (q3) summary += `Live audience estimate: ${q3.value}\n`;
-    if (q4) summary += `Donations: ${q4.value}\n`;
-    if (q5) summary += `Maintenance: ${q5.value}\n`;
-    if (q6) summary += `Content ready: ${q6.value}\n`;
-    if (q7) summary += `Notes: ${q7}\n`;
-    
-    summary += `\n=== Send this to ===\n`;
-    summary += `Email: saaima.yaqoob@gmail.com\n`;
-    summary += `WhatsApp: +923061115444\n`;
-    
-    navigator.clipboard.writeText(summary).then(() => {
-      document.getElementById('successMsg').style.display = 'block';
-      setTimeout(() => {
-        document.getElementById('successMsg').style.display = 'none';
-      }, 4000);
+    const qDomain = document.querySelector('input[name="qDomain"]:checked');
+
+    const features = getSelectedFeatures();
+
+    const payload = {
+      name: name,
+      contact: contact,
+      selectedFeatures: features.map(f => f.name),
+      featureDetails: features,
+      totalHours: document.getElementById('totalHours').textContent,
+      totalCost: document.getElementById('totalCost').textContent,
+      quotedRate: CURRENCY + ' ' + fmtRate(RATE) + '/hr (' + DISCOUNT_PCT + '% off ' + CURRENCY + ' ' + fmtRate(REGULAR_RATE) + ')',
+      rateFit: rateFit ? rateFit.value : '',
+      budgetNote: budgetNote,
+      timeline: q2 ? q2.value : '',
+      liveAudience: q3 ? q3.value : '',
+      donations: q4 ? q4.value : '',
+      maintenance: q5 ? q5.value : '',
+      contentReady: q6 ? q6.value : '',
+      domainPreference: qDomain ? qDomain.value : '',
+      notes: document.getElementById('q7Notes').value.trim()
+    };
+
+    const btn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).then(() => {
+      successMsg.style.display = 'block';
+      document.getElementById('intakeForm').reset();
+      updatePricing();
+      successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }).catch(() => {
-      alert('Could not copy. Please try again.');
+      errorMsg.style.display = 'block';
+    }).finally(() => {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
     });
   }
 </script>
