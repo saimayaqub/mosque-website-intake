@@ -11,26 +11,29 @@ Submissions are saved straight to a Google Sheet and emailed to you — no third
 - **Email notifications** — you get a formatted copy of every inquiry the moment it's submitted
 - **Config-driven pricing** — set your rate once in `config.js`; all feature costs and totals recalculate automatically
 - **Discount display** — your regular rate shown struck through next to the discounted community rate
-- **Calculate Estimate** — clients get an itemized tentative price on demand
+- **Live estimate** — an itemized tentative price shows and updates automatically as features are toggled; the Basic Package starts pre-selected
+- **Custom feature request** — an "I don't see a feature I need" option with a free-text box, captured for a separate quote
 - **Domain-cost heads-up** — clients are told the domain is a separate yearly cost and pick how to handle it
 - **Budget-fit question** — surfaces genuine affordability concerns without inviting rate haggling
+- **"Why work with Saima?" trust panel** — reassurance up front to reduce friction
+- **Config-driven next steps** — after submitting, clients see your quote turnaround and an easy booking-fee start (all set in `config.js`)
 - **Novosols branding** — brand colours and fonts baked in
 - **No build step** — plain HTML, CSS, and JavaScript
 
 ## How It Works
 
-1. Client selects features (Basic Package + Add-ons) — pricing updates live
-2. Client clicks **Calculate Estimate** for an itemized breakdown
-3. Client answers a few questions (timeline, audience, donations, content readiness…)
+1. The Basic Package is pre-selected; the client adds or removes features (and add-ons) — the itemized estimate updates live
+2. If something's missing, they tick **"I don't see a feature I need"** and describe it
+3. Client answers a few questions (timeline, audience, donations, maintenance, content readiness…)
 4. Client sees the rate and a domain-cost notice, and answers the budget-fit question
-5. Client clicks **Submit Inquiry** → the data is written to your Google Sheet and emailed to you
+5. Client clicks **Share My Requirements** → the data is written to your Google Sheet and emailed to you, and they see the next steps (your quote turnaround + easy booking-fee start)
 
 ## Files
 
 | File | Purpose |
 |------|---------|
 | `index.html` | The complete form (markup, styles, and logic) |
-| `config.js` | **The only file you edit** — endpoint, pricing, and domain cost |
+| `config.js` | **The only file you edit** — endpoint, pricing, domain cost, and payment/next-steps wording |
 | `Code.gs` | Google Apps Script backend (paste into your Sheet's Apps Script project) |
 | `README.md` | This file |
 
@@ -48,11 +51,17 @@ window.INTAKE_CONFIG = {
   },
   domain: {
     estimatedAnnualCost: 'USD 10–25/year'
+  },
+  payment: {
+    quoteTurnaround: '2 business days', // how soon you'll send a tailored quote
+    bookingFee: 50,                     // small token to reserve a slot (0 hides it)
+    depositPercent: 30                  // deposit to begin work
   }
 };
 ```
 
-Change your rate, discount, currency, or the domain estimate here — nothing in `index.html` needs editing.
+Change your rate, discount, currency, domain estimate, or the post-submission payment wording here —
+nothing in `index.html` needs editing.
 
 ### 2. Connect the Google Sheet backend — `Code.gs`
 
@@ -81,12 +90,16 @@ For local testing, just open `index.html` in a browser.
 
 ## Data Captured
 
-Each submission records: timestamp, name, contact, selected features, total hours, total cost,
-quoted rate, rate-fit answer, budget note, timeline, live-audience estimate, donation preference,
-maintenance plan, content readiness, domain preference, and free-form notes.
+Each submission records these columns (17): timestamp, name, contact, selected features,
+custom feature request, total hours, total cost, quoted rate, rate-fit answer, budget note,
+timeline, live-audience estimate, donation preference, maintenance plan, content readiness,
+domain preference, and free-form notes.
+
+If you add or change columns in `Code.gs`, re-deploy it **and** delete row 1 in the sheet so the
+new header rebuilds on the next submission (the header is only written when the sheet is empty).
 
 > **Privacy note:** unlike a static page, this form *does* store data — submissions are saved to your
-> Google Sheet and emailed to you. Nothing is sent anywhere until the client clicks **Submit Inquiry**.
+> Google Sheet and emailed to you. Nothing is sent anywhere until the client clicks **Share My Requirements**.
 
 ## Browser Support
 
@@ -96,5 +109,6 @@ Works on all modern browsers (Chrome/Edge 90+, Firefox 88+, Safari 14+, and mobi
 
 - **Nothing appears in the sheet:** confirm the web app's **Who has access** is set to **Anyone**, and that
   `sheetEndpoint` in `config.js` matches your current `/exec` URL.
-- **New columns not populating:** re-deploy `Code.gs` as a **New version** (see step 2).
+- **New columns not populating:** re-deploy `Code.gs` as a **New version** (see step 2), and delete row 1 in the sheet so the header rebuilds.
+- **Seeing an old version after an update:** the page sends no-cache meta tags, but browsers/CDNs can still hold a copy — a hard refresh (`Ctrl+Shift+R`) pulls the latest.
 - **JavaScript errors:** open the browser console (F12) to see details.
