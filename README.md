@@ -1,140 +1,100 @@
 # Mosque Website Project Intake Form
 
-A simple, dynamic intake form for collecting mosque website project requirements and pricing quotes.
+A dynamic intake form for collecting mosque website project requirements and pricing quotes.
+Submissions are saved straight to a Google Sheet and emailed to you — no third-party service, no monthly fees.
+
+**🔗 Live form:** https://saimayaqub.github.io/mosque-website-intake/
 
 ## Features
 
-- **Dynamic pricing**: Hours and costs update automatically as clients select features
-- **Standard mosque rate**: USD 12.50/hour with 50% community discount built in
-- **Flexible**: Clients can suggest their own hourly rate
-- **No dependencies**: Pure HTML, CSS, and JavaScript—works anywhere
-- **Easy to use**: Copy & Share button exports formatted summary for email/WhatsApp
+- **Saves to Google Sheet** — each submission becomes a row, via a free Google Apps Script web app
+- **Email notifications** — you get a formatted copy of every inquiry the moment it's submitted
+- **Config-driven pricing** — set your rate once in `config.js`; all feature costs and totals recalculate automatically
+- **Discount display** — your regular rate shown struck through next to the discounted community rate
+- **Calculate Estimate** — clients get an itemized tentative price on demand
+- **Domain-cost heads-up** — clients are told the domain is a separate yearly cost and pick how to handle it
+- **Budget-fit question** — surfaces genuine affordability concerns without inviting rate haggling
+- **Novosols branding** — brand colours and fonts baked in
+- **No build step** — plain HTML, CSS, and JavaScript
 
 ## How It Works
 
-1. Client selects features (Basic Package + Add-ons)
-2. Pricing updates in real-time
-3. Client answers 7 quick questions
-4. Client confirms or adjusts hourly rate
-5. Clicks "Copy & Send" → formatted summary is copied to clipboard
-6. Client emails or WhatsApps the summary to you
+1. Client selects features (Basic Package + Add-ons) — pricing updates live
+2. Client clicks **Calculate Estimate** for an itemized breakdown
+3. Client answers a few questions (timeline, audience, donations, content readiness…)
+4. Client sees the rate and a domain-cost notice, and answers the budget-fit question
+5. Client clicks **Submit Inquiry** → the data is written to your Google Sheet and emailed to you
 
-## Deployment
+## Files
 
-### Option 1: Vercel (Recommended – 2 minutes)
+| File | Purpose |
+|------|---------|
+| `index.html` | The complete form (markup, styles, and logic) |
+| `config.js` | **The only file you edit** — endpoint, pricing, and domain cost |
+| `Code.gs` | Google Apps Script backend (paste into your Sheet's Apps Script project) |
+| `README.md` | This file |
 
-1. Go to [vercel.com](https://vercel.com) and sign in
-2. Create a new blank project
-3. Upload `mosque-website-intake-form.html` as `index.html`
-4. Deploy
-5. Your form is live with a permanent URL
+## Setup
 
-### Option 2: Netlify
+### 1. Configure the form — `config.js`
 
-1. Go to [netlify.com](https://netlify.com)
-2. Drag and drop `mosque-website-intake-form.html`
-3. Done—URL is live immediately
-
-### Option 3: GitHub Pages (Free & Permanent)
-
-1. Create a GitHub repo named `mosque-intake-form`
-2. Upload `mosque-website-intake-form.html` as `index.html`
-3. Go to repo Settings > Pages
-4. Enable GitHub Pages
-5. Your form is live at `yourusername.github.io/mosque-intake-form`
-
-### Option 4: Local Testing
-
-Just open `mosque-website-intake-form.html` in your browser.
-
-## Customization
-
-Edit the HTML file to personalize it:
-
-**Change the title** (line 9):
-```html
-<title>Mosque Website Project Intake Form</title>
+```js
+window.INTAKE_CONFIG = {
+  sheetEndpoint: 'PASTE_YOUR_APPS_SCRIPT_URL_HERE', // from step 2 below
+  pricing: {
+    currency: 'USD',
+    regularRate: 30,    // your normal hourly rate (shown struck through)
+    discountPercent: 50 // community discount → 30 × (1 − 50/100) = 15/hour
+  },
+  domain: {
+    estimatedAnnualCost: 'USD 10–25/year'
+  }
+};
 ```
 
-**Change the header text** (around line 316):
-```html
-<h1>Mosque Website Project</h1>
-<p>Tell me what you need. Pricing updates as you select features.</p>
-```
+Change your rate, discount, currency, or the domain estimate here — nothing in `index.html` needs editing.
 
-**Update contact info** (around line 663-664):
-```javascript
-summary += `Email: your-email@example.com\n`;
-summary += `WhatsApp: +1234567890\n`;
-```
+### 2. Connect the Google Sheet backend — `Code.gs`
 
-**Add or remove features**: Find the `<label class="feature-item">` sections and add/remove blocks. Keep the data attributes (`data-hours` and `data-cost`) consistent.
+1. Create a Google Sheet (any name).
+2. **Extensions → Apps Script**, delete the sample code, paste the contents of `Code.gs`, and Save.
+3. Set `NOTIFY_EMAIL` at the top of `Code.gs` to the address that should receive inquiries.
+4. **Deploy → New deployment → Web app**:
+   - **Execute as:** Me
+   - **Who has access:** **Anyone** ← required, or submissions are rejected
+5. Deploy, authorize when prompted, and copy the Web app URL (ends in `/exec`).
+6. Paste that URL into `sheetEndpoint` in `config.js`.
 
-**Adjust the hourly rate** (around line 555):
-```html
-<label>Standard rate for mosque projects: USD 12.50/hour</label>
-```
+The header row is created automatically on the first submission. If you change the columns later,
+delete row 1 in the sheet and it rebuilds on the next submission.
 
-## What Clients See
+**After editing `Code.gs`,** re-deploy: **Deploy → Manage deployments → ✏️ edit → New version → Deploy**
+(this keeps the same `/exec` URL).
 
-1. **Feature selection**: Checkbox list of website features with instant cost calculation
-2. **Pricing display**: "Total project: 41-65 hours | USD 512-812"
-3. **Questions**: 7 simple questions about timeline, audience, donations, content readiness, etc.
-4. **Rate confirmation**: Option to accept or suggest a different hourly rate
-5. **Copy button**: One-click copy of formatted summary
+### 3. Deploy the site (GitHub Pages)
 
-## What Gets Sent to You
+1. Push to your GitHub repo.
+2. Repo **Settings → Pages** → deploy from `main` branch.
+3. Your form goes live at `https://<username>.github.io/<repo>/`.
 
-When a client clicks "Copy & Send", this formatted text is copied:
+For local testing, just open `index.html` in a browser.
 
-```
-=== MOSQUE WEBSITE PROJECT INTAKE ===
+## Data Captured
 
-CONTACT
-Name: [their name]
-Contact: [email/phone]
+Each submission records: timestamp, name, contact, selected features, total hours, total cost,
+quoted rate, rate-fit answer, budget note, timeline, live-audience estimate, donation preference,
+maintenance plan, content readiness, domain preference, and free-form notes.
 
-SELECTED FEATURES & PRICING
-Total project: 41-65 hours | USD 512-812
-Hourly rate: USD 12.50 (standard mosque rate)
-
-ANSWERS
-Timeline: Within 2 weeks
-Live audience estimate: Hundreds
-Donations: E-transfer only
-Maintenance: Your staff
-Content ready: Mostly ready
-Notes: [any notes they added]
-
-=== Send this to ===
-Email: saaima.yaqoob@gmail.com
-WhatsApp: +923061115444
-```
-
-## Files Included
-
-- `mosque-website-intake-form.html` – The complete form (single file)
-- `README.md` – This file
+> **Privacy note:** unlike a static page, this form *does* store data — submissions are saved to your
+> Google Sheet and emailed to you. Nothing is sent anywhere until the client clicks **Submit Inquiry**.
 
 ## Browser Support
 
-Works on all modern browsers:
-- Chrome / Edge 90+
-- Firefox 88+
-- Safari 14+
-- Mobile browsers (iOS Safari, Chrome Mobile)
+Works on all modern browsers (Chrome/Edge 90+, Firefox 88+, Safari 14+, and mobile browsers).
 
-## No Tracking, No Cookies
+## Troubleshooting
 
-This form collects nothing until the user clicks "Copy & Send". No data is stored on any server. Everything stays on the client's device until they manually share it.
-
-## Questions or Issues?
-
-If you encounter any issues:
-1. Make sure you're using a modern browser
-2. Check that the HTML file is not opened with a text editor—use a browser
-3. If there are JavaScript errors, open the browser console (F12) to see what's wrong
-
----
-
-**Ready to use?** Deploy it now and start sharing the form link with your clients. They'll fill it out, copy the summary, and send it to you via email or WhatsApp. Simple, fast, no backend needed.
+- **Nothing appears in the sheet:** confirm the web app's **Who has access** is set to **Anyone**, and that
+  `sheetEndpoint` in `config.js` matches your current `/exec` URL.
+- **New columns not populating:** re-deploy `Code.gs` as a **New version** (see step 2).
+- **JavaScript errors:** open the browser console (F12) to see details.
